@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/index.css">
+  <title>Articles</title>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>My Articles</h1>
+    <ul id="article-list">
+ 
+    </ul>
+    <div id="content">
+
+    </div>
+    
+  </main>
+  <script>
+    const getArticles = async () => {
+      const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@ben_90301');
+      const { feed, items } = await res.json();
+
+      items.forEach(article => {
+        const li = document.createElement('li');
+        li.innerText = article.title;
+        li.addEventListener('click', () => {
+          document.querySelector("#content").innerHTML = article.content
+        })
+        document.querySelector("#article-list").appendChild(li);
+      });
+    }
+    getArticles();
+  </script>
+  </body>
+</html>
