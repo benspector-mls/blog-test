@@ -1,0 +1,29 @@
+aside ul {
+  padding: 0;
+  list-style:none;
+}
+
+aside {
+  min-width: 220px;
+  flex: 1;
+  padding: 0 1rem;
+  min-height: 100vh
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#headshot {
+  max-width: 300px;
+  margin: 2rem;
+}
+
+#content {
+  max-width: 800px;
+  font-size:x-large;
+}
+

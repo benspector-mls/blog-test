@@ -3,20 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/articles.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/articles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <title>Articles</title>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="articles.html">Articles</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Ben Spector</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="articles.html">Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="resume.html">Resume</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
   <main>
     <aside>
-      <h1>My Articles</h1>
+      <h3>My Articles</h3>
       <ul id="article-list">
         
       </ul>
@@ -26,27 +43,8 @@
       <p><i id="author-date"></i></p>
       <div id="body"></div>
     </div>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   </main>
-  
-  <script>
-    const getArticles = async () => {
-      const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@shadmanc');
-      const { feed, items } = await res.json();
-
-      items.forEach(article => {
-        console.log(article);
-        const li = document.createElement('li');
-        li.innerText = article.title;
-        li.addEventListener('click', () => {
-          document.querySelector("#title").innerHTML = article.title
-          document.querySelector("#author-date").innerText = `${article.author} • ${(new Date(article.pubDate)).toLocaleDateString()}`
-          document.querySelector("#body").innerHTML = article.content
-        })
-        document.querySelector("#article-list").appendChild(li);
-      });
-    }
-    getArticles();
-  </script>
+  <script src="js/medium-articles.js"></script>
   </body>
 </html>

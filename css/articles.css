@@ -1,0 +1,41 @@
+aside {
+  min-width: 220px;
+  flex: 1;
+  padding: 1rem 1rem;
+  min-height: 100vh;
+  background: #f5f5f5;
+  position: -webkit-sticky; /* for browser compatibility */
+  position: sticky;
+  top: 0px;
+  align-self: flex-start;
+}
+
+main {
+  display: flex;
+}
+
+#content {
+  padding: 4rem;
+  flex: 4;
+}
+
+aside ul {
+  padding: 0;
+  list-style:none;
+}
+
+aside li {
+  margin-bottom: 1rem;
+}
+
+#content figure {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#content figure img {
+  max-width: 500px;
+  min-width: 300px;
+}
+
