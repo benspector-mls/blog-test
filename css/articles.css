@@ -15,7 +15,7 @@ main {
 }
 
 #content {
-  padding: 4rem;
+  padding: 2rem 1rem;
   flex: 4;
 }
 
@@ -39,3 +39,17 @@ aside li {
   min-width: 300px;
 }
 
+
+
+@media only screen and (max-width: 600px) {
+  aside {
+    position: relative;
+    min-height: initial;
+    width: 100%;
+  }
+
+  main {
+    flex-direction: column;
+    width: 100%;
+  }
+}
