@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/articles.css">
   <title>Articles</title>
 </head>
 <body>
@@ -15,25 +15,33 @@
     </ul>
   </nav>
   <main>
-    <h1>My Articles</h1>
-    <ul id="article-list">
- 
-    </ul>
+    <aside>
+      <h1>My Articles</h1>
+      <ul id="article-list">
+        
+      </ul>
+    </aside>
     <div id="content">
-
+      <h1 id="title"></h1>
+      <p><i id="author-date"></i></p>
+      <div id="body"></div>
     </div>
     
   </main>
+  
   <script>
     const getArticles = async () => {
-      const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@ben_90301');
+      const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@shadmanc');
       const { feed, items } = await res.json();
 
       items.forEach(article => {
+        console.log(article);
         const li = document.createElement('li');
         li.innerText = article.title;
         li.addEventListener('click', () => {
-          document.querySelector("#content").innerHTML = article.content
+          document.querySelector("#title").innerHTML = article.title
+          document.querySelector("#author-date").innerText = `${article.author} • ${(new Date(article.pubDate)).toLocaleDateString()}`
+          document.querySelector("#body").innerHTML = article.content
         })
         document.querySelector("#article-list").appendChild(li);
       });
